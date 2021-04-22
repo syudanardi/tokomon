@@ -1,5 +1,5 @@
 {
-  "short_name": "Tokmon",
+  "short_name": "Tokomon",
   "name": "Tokopedia Pokemon Shopping",
   "icons": [
     {
@@ -8,7 +8,7 @@
       "type": "image/x-icon"
     },
     {
-      "src": "logo192.png",
+      "src": "logo192-ori-borderless.png",
       "type": "image/png",
       "sizes": "192x192"
     },

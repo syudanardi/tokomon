@@ -8,7 +8,7 @@ export const Card = ({object}) => {
       className="bg-white w-20 h-20 object-cover rounded-full mx-auto shadow-lg"
       alt={object.name}
      />
-     <p className="capitalize text-xl mt-1 min-w-min">{object.name}</p>
+     <p className="capitalize text-xl mt-1 max-w-min m-auto">{object.name}</p>
      </div>
   )
 }

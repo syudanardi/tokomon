@@ -1,9 +1,9 @@
 export default function appReducer(state, action) {
     switch (action.type) {
-      case "ADD_EMPLOYEE":
+      case "ADD_POKEMON":
         return {
           ...state,
-          employees: [...state.employees, action.payload],
+          pokemons: [...state.pokemons, action.payload],
         };
         
       case "EDIT_EMPLOYEE":

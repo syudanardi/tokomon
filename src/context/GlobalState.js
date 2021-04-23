@@ -3,7 +3,10 @@ import React, { createContext, useReducer, useEffect } from 'react';
 import appReducer from 'context/AppReducer';
 
 let initialState = {
-  pokemons: {}
+  pokemons: {
+    charmander: ['Rizky', 'Ajeng'],
+    bulbasaur: ['Mas Eko', 'Puput']
+  }
 };
   
 function getLocalStorage(key, initialValue) {
@@ -37,10 +40,10 @@ export const GlobalProvider = ({ children }) => {
     setLocalStorage("tokomonState", state);
   }, [state]);
 
-  function addEmployee(employee) {
+  function addPokemon(pokemon) {
     dispatch({
-      type: "ADD_EMPLOYEE",
-      payload: employee
+      type: "ADD_POKEMON",
+      payload: pokemon
     });
   }
 
@@ -68,8 +71,8 @@ export const GlobalProvider = ({ children }) => {
   return (
     <GlobalContext.Provider
       value={{
-        employees: state.employees,
-        addEmployee,
+        pokemons: state.pokemons,
+        addPokemon,
         editEmployee,
         removeEmployee,
         reset

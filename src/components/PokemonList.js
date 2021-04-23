@@ -1,5 +1,6 @@
 import React from "react";
 import { useQuery, gql } from '@apollo/client';
+import {PokemonCard} from 'components/PokemonCard'
 
 const GET_POKEMONS = gql`
   query pokemons($limit: Int, $offset: Int) {
@@ -14,19 +15,15 @@ const GET_POKEMONS = gql`
   
 
 export const PokemonList = () => {
-  const {loading, error, data} = useQuery(GET_POKEMONS, {variables: {limit: 20, offset:0}})
+  const {loading, error, data} = useQuery(GET_POKEMONS, {variables: {limit: 100, offset:300}})
   function getPokemon() {
     if (loading) return <p>Loading...</p>;
     if (error) return <p>Error :(</p>;
     console.log(data);
     return(
-        <div class="grid grid-cols-2 gap-6 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-6 xl:grid-cols-12">
+        <div class="grid grid-cols-2 gap-6 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-6">
           {data.pokemons.results.map((pokemon)=>{
-            return <img
-              src={pokemon.image}
-              className="card-img"
-              alt={pokemon.name}
-            />
+            return <PokemonCard pokemon={pokemon}/>
           })}
         </div>
       

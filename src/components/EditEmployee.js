@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { useHistory, Link } from 'react-router-dom';
 
-import { GlobalContext } from '../context/GlobalState';
+import { GlobalContext } from 'context/GlobalState';
 
 export const EditEmployee = (route) => {
   let history = useHistory();

@@ -5,7 +5,7 @@ import ApolloClient from "apollo-boost";
 import { ApolloProvider } from '@apollo/client/react';
 
 import { GlobalProvider } from './context/GlobalState';
-import { Home } from './components/Home';
+import { Home } from './pages/Home';
 import { AddEmployee } from './components/AddEmployee';
 import { EditEmployee } from './components/EditEmployee';
 

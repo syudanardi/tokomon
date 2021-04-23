@@ -1,16 +1,9 @@
 import React, { createContext, useReducer, useEffect } from 'react';
 
-import appReducer from './AppReducer';
+import appReducer from 'context/AppReducer';
 
 let initialState = {
-  employees: [
-    {
-      id: 1,
-      name: "Sammy",
-      location: "DigitalOcean",
-      designation: "Shark"
-    }
-  ]
+  pokemons: {}
 };
   
 function getLocalStorage(key, initialValue) {

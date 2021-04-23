@@ -10,3 +10,30 @@ export const GET_POKEMONS = gql`
       }
     }
   }`
+
+export const GET_POKEMON = gql`
+query pokemon($name: String!) {
+  pokemon(name: $name) {
+    id
+    name
+    sprites {
+      front_default
+    }
+    abilities {
+      ability {
+        name
+      }
+    }
+    moves {
+      move {
+        name
+      }
+    }
+    types {
+      type {
+        name
+      }
+    }
+  }
+}
+`;

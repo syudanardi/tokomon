@@ -6,7 +6,7 @@ import { ApolloProvider } from '@apollo/client/react';
 
 import { GlobalProvider } from './context/GlobalState';
 import { Home } from './pages/Home';
-import { AddEmployee } from './components/AddEmployee';
+import { PokemonDetails } from './pages/PokemonDetails';
 import { EditEmployee } from './components/EditEmployee';
 
 
@@ -20,7 +20,7 @@ function App() {
         <div className="App">
           <Switch>
             <Route path="/" component={Home} exact />
-            <Route path="/add" component={AddEmployee} exact />
+            <Route path="/pokemon-details/:name" component={PokemonDetails} exact />
             <Route path="/edit/:id" component={EditEmployee} exact />
           </Switch>
         </div>

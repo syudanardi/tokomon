@@ -2099,6 +2099,78 @@ video {
   background-color: currentColor;
 }
 
+.bg-bug {
+  background-color: #729f3f;
+}
+
+.bg-dark {
+  background-color: #729f3f;
+}
+
+.bg-dragon {
+  background-color: #f16e57;
+}
+
+.bg-electric {
+  background-color: #f16e57;
+}
+
+.bg-fairy {
+  background-color: #fdb9e9;
+}
+
+.bg-fighting {
+  background-color: #d56723;
+}
+
+.bg-fire {
+  background-color: #fd7d24;
+}
+
+.bg-flying {
+  background-color: #bdb9b8;
+}
+
+.bg-ghost {
+  background-color: #7b62a3;
+}
+
+.bg-grass {
+  background-color: #9ccd51;
+}
+
+.bg-ground {
+  background-color: #ab9842;
+}
+
+.bg-ice {
+  background-color: #51c4e7;
+}
+
+.bg-normal {
+  background-color: #a4acaf;
+}
+
+.bg-poison {
+  background-color: #b97fc9;
+}
+
+.bg-psychic {
+  background-color: #f366b9;
+}
+
+.bg-rock {
+  background-color: #a38c21;
+}
+
+.bg-steel {
+  background-color: #9eb7b8;
+}
+
+.bg-water {
+  background-color: #4592c4;
+}
+
 .bg-black {
   --tw-bg-opacity: 1;
   background-color: rgba(0, 0, 0, var(--tw-bg-opacity));

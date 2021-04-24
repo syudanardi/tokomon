@@ -5,7 +5,7 @@ import {Catching} from "components/Catching";
 import { GlobalContext } from 'context/GlobalState';
 
 export const PokemonDetails = (route) => {
-  const { pokemons, addPokemon } = useContext(GlobalContext);
+  const { pokemons, addPokemon, removePokemon } = useContext(GlobalContext);
   const name = route.match.params.name;
   const [catching, setCatching] = useState({isCatching: false})
   return (
@@ -16,7 +16,7 @@ export const PokemonDetails = (route) => {
         </h3>
         <Heading/>
         {catching.isCatching ? <Catching state={{catching, setCatching, pokemons, addPokemon}}></Catching> :
-        <Details name={name} setCatching={setCatching} pokemons={pokemons} ></Details>
+        <Details state={{name, setCatching, pokemons, removePokemon}} ></Details>
         }
       </div>
     </React.Fragment>)

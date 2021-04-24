@@ -5,15 +5,36 @@ import { Pill } from 'components/Pill';
 import pokeball from 'images/green-tpb.png';
 import openPokeball from 'images/green-tpbo.png';
 import 'components/css/Details.css';
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
+
+const MySwal = withReactContent(Swal)
 
 export const Details = (prop) => {
-  const {name, setCatching, pokemons} = prop;
+  const {name, setCatching, pokemons, removePokemon} = prop.state;
   const {loading, error, data} = useQuery(GET_POKEMON, {variables: {name:name}})
-  console.log(pokemons)
 
-  function catchPokemon(pokemon, name) {
+  function catchPokemon(pokemon) {
     setCatching({isCatching: true, pokemon})
-    //addPokemon({pokemon, name});
+  }
+
+  function releasePokemon(pokemon, name) {
+    console.log("hahahah");
+    MySwal.fire({
+      title: <p>Are you sure you want to release {name}?</p>,
+      confirmButtonText: "Yes!",
+      showCancelButton: "NO!!!",
+      icon: 'warning',
+    }).then((result)=>{
+      if (result.isConfirmed) {
+        removePokemon({pokemon,name});
+        MySwal.fire(
+          'Released!',
+          `${name} has been released! Bye~`,
+          'success'
+        )
+      }
+    })
   }
 
   function getPokemon() {
@@ -48,7 +69,11 @@ export const Details = (prop) => {
                 <h3 className="font-bold text-4xl my-3 bg-green-300 rounded-md lg:pb-2">Owned</h3>
                 <div className="flex flex-row flex-wrap justify-start font-semibold h-24 justify-center">
                   {pokemons[data.pokemon.name] ? pokemons[data.pokemon.name].map((owned)=>{
-                    return <Pill style="mx-4 " text={owned}></Pill>
+                    return (
+                      <div onClick={()=>{releasePokemon(data.pokemon.name, owned)}}>
+                        <Pill style="mx-4 h-12 hover:bg-red-500 hover:text-white" text={owned}></Pill>
+                      </div>
+                    )
                   }) : <>None</>}
                 </div>
               </div>

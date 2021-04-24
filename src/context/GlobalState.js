@@ -58,10 +58,10 @@ export const GlobalProvider = ({ children }) => {
     });
   }
 
-  function removeEmployee(id) {
+  function removePokemon(pokemon) {
     dispatch({
-      type: "REMOVE_EMPLOYEE",
-      payload: id
+      type: "REMOVE_POKEMON",
+      payload: pokemon
     });
   }
 
@@ -78,7 +78,7 @@ export const GlobalProvider = ({ children }) => {
         pokemons: state.pokemons,
         addPokemon,
         editEmployee,
-        removeEmployee,
+        removePokemon,
         reset
       }}
     >

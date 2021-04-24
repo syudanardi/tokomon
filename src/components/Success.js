@@ -16,6 +16,7 @@ export const Success = (props)=>{
     if (pokemons[catching.pokemon] && pokemons[catching.pokemon].includes(nickName)) {
       MySwal.fire({
         title: <p>Already have {pokemonName} with {nickName} name</p>,
+        icon: 'error',
         showConfirmButton: false,
         showCancelButton: true,
         cancelButtonText: "Oops..."
@@ -23,6 +24,7 @@ export const Success = (props)=>{
       return
     } else {
       MySwal.fire({
+        icon:'success',
         title: <p>{nickName} added to your Pokemon List!</p>,
         confirmButtonText: "Neat!"
       }).then((result)=>{

@@ -1,7 +1,8 @@
 export default function appReducer(state, action) {
+    let input = [];
     switch (action.type) {
       case "ADD_POKEMON":
-        let input = [];
+        input = [];
         if (state.pokemons[action.payload.pokemon]) {
           input = [...state.pokemons[action.payload.pokemon]]
         }
@@ -29,12 +30,24 @@ export default function appReducer(state, action) {
           employees: updatedEmployees,
         };
   
-      case "REMOVE_EMPLOYEE":
+      case "REMOVE_POKEMON":
+        input=[];
+        if (state.pokemons[action.payload.pokemon]) {
+          input = [...state.pokemons[action.payload.pokemon]]
+        }
+        const index = input.indexOf(action.payload.name);
+        if (index > -1) {
+          input.splice(index, 1);
+        } else {
+          console.log("error removing, index not found");
+          return {...state}
+        }
         return {
           ...state,
-          employees: state.employees.filter(
-            (employee) => employee.id !== action.payload
-          ),
+          pokemons: {
+            ...state.pokemons,
+            [action.payload.pokemon]: input
+          },
         };
 
       case "RESET":

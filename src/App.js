@@ -17,7 +17,7 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <GlobalProvider>
-        <div className="App">
+        <div className="App mx-2">
           <Switch>
             <Route path="/" component={Home} exact />
             <Route path="/pokemon-details/:name" component={PokemonDetails} exact />

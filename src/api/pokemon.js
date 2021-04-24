@@ -19,11 +19,6 @@ query pokemon($name: String!) {
     sprites {
       front_default
     }
-    abilities {
-      ability {
-        name
-      }
-    }
     moves {
       move {
         name

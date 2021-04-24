@@ -32,8 +32,8 @@ export const PokemonList = () => {
 
   return (
     <React.Fragment>
-      <div class="mt-10 flex items-center justify-center"> 
-         <div class="grid grid-cols-2 gap-6 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-6">
+      <div className="mt-10 flex items-center justify-center"> 
+         <div className="grid grid-cols-2 gap-6 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-6">
           {pokemonsData.map((pokemon)=>{
             return (
               <Link to={`/pokemon-details/${pokemon.name}`}>

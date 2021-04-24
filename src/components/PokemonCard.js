@@ -8,9 +8,9 @@ export const PokemonCard = ({pokemon}) =>{
   const { pokemons } = useContext(GlobalContext);
   let count = (pokemons[pokemon.name] !== undefined ? pokemons[pokemon.name].length : 0);
   return(
-    <div class={style.cardBorder}>
+    <div className={style.cardBorder}>
       <Card object={pokemon}/>
-      <span class={style.ownedFrame}>
+      <span className={style.ownedFrame}>
         Owned: {count}
       </span>
     </div>

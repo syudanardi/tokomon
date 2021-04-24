@@ -2101,18 +2101,21 @@ video {
 
 .bg-bug {
   background-color: #729f3f;
+  color: white;
 }
 
 .bg-dark {
   background-color: #729f3f;
+  color: white;
 }
 
 .bg-dragon {
   background-color: #f16e57;
+  color: white;
 }
 
 .bg-electric {
-  background-color: #f16e57;
+  background-color: #F8D030;
 }
 
 .bg-fairy {
@@ -2121,10 +2124,12 @@ video {
 
 .bg-fighting {
   background-color: #d56723;
+  color: white;
 }
 
 .bg-fire {
   background-color: #fd7d24;
+  color: white;
 }
 
 .bg-flying {
@@ -2133,6 +2138,7 @@ video {
 
 .bg-ghost {
   background-color: #7b62a3;
+  color: white;
 }
 
 .bg-grass {
@@ -2153,14 +2159,17 @@ video {
 
 .bg-poison {
   background-color: #b97fc9;
+  color: white;
 }
 
 .bg-psychic {
   background-color: #f366b9;
+  color: white;
 }
 
 .bg-rock {
   background-color: #a38c21;
+  color: white;
 }
 
 .bg-steel {
@@ -2169,6 +2178,7 @@ video {
 
 .bg-water {
   background-color: #4592c4;
+  color: white;
 }
 
 .bg-black {

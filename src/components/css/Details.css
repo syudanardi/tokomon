@@ -1,0 +1,40 @@
+.pokeball-button img:last-child {
+  display: none;  
+}
+.pokeball-button:hover img:last-child {
+  display: block;  
+}
+.pokeball-button:hover img:first-child {
+  display: none;  
+}
+
+@media (max-width: 768px) {
+  .floating-button {
+    max-width:20vw;
+    padding:1rem;
+    width:fit-content;
+    box-shadow: rgba(49, 53, 59, 0.12) 0px 1px 6px 0px;
+    transition: 250ms ease;
+    border-radius: 10px;
+    background: white;
+    position: fixed;
+    bottom: 1%;
+    left: 40vw;
+    right: 40vw;
+    z-index: 998;
+    color: black;
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: 250ms ease;
+  }
+  .floating-button:hover {
+    background: gray;
+    color: white;
+    filter: grayscale(0%);
+    transition: 250ms ease;
+  }
+}

@@ -1,20 +1,18 @@
-import React, {useContext} from "react";
+import React from "react";
 import { useQuery } from '@apollo/client';
 import { GET_POKEMON } from 'api/pokemon'
 import { Pill } from 'components/Pill';
-import { GlobalContext } from 'context/GlobalState';
 import pokeball from 'images/green-tpb.png';
 import openPokeball from 'images/green-tpbo.png';
 import 'components/css/Details.css';
 
 export const Details = (prop) => {
-  const {name, setCatching} = prop;
+  const {name, setCatching, pokemons} = prop;
   const {loading, error, data} = useQuery(GET_POKEMON, {variables: {name:name}})
-  const { pokemons, addPokemon } = useContext(GlobalContext);
   console.log(pokemons)
 
   function catchPokemon(pokemon, name) {
-    setCatching({isCatching: true, pokemon, name})
+    setCatching({isCatching: true, pokemon})
     //addPokemon({pokemon, name});
   }
 
@@ -36,7 +34,7 @@ export const Details = (prop) => {
                 return <Pill style="mx-4 "  text={typeName} color={{bg:typeName}}></Pill>
               })}
             </div>
-            <div className="floating-button" onClick={()=>{catchPokemon(data.pokemon.name, "Arjuna")}}>
+            <div className="floating-button" onClick={()=>{catchPokemon(data.pokemon.name)}}>
               <div className="pokeball-button">
                 <img className="mx-auto lg:h-24 pokeball-img" src={pokeball}/>
                 <img className="mx-auto lg:h-24 pokeball-img" src={openPokeball}/>
@@ -56,7 +54,7 @@ export const Details = (prop) => {
               </div>
               <div className="row-span-1">
                 <h3 className="font-bold text-4xl my-3 bg-green-300 rounded-md lg:pb-2">Moves</h3>
-                <div className="flex flex-row flex-wrap justify-start font-semibold h-24 justify-center">
+                <div className="flex flex-row flex-wrap justify-start font-semibold h-auto justify-center last-element">
                   {data.pokemon.moves.map((move)=>{
                     return <Pill style="mx-2 h-12 flex-none" text={move.move.name}></Pill>
                   })}

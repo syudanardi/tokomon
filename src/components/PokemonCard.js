@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import {Card} from 'components/Card'
 
 import { GlobalContext } from 'context/GlobalState';
-const {style} = require('components/css/PokemonCard')
+const {style} = require('components/css/CommonStyle')
 
 export const PokemonCard = ({pokemon}) =>{
   const { pokemons } = useContext(GlobalContext);

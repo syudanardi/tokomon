@@ -12,7 +12,7 @@ let initialState = {
 function getLocalStorage(key, initialValue) {
     try {
         const value = window.localStorage.getItem(key);
-        if (JSON.parse(value).hasOwnProperty('pokemon')){
+        if (JSON.parse(value).hasOwnProperty('pokemons')){
           return value ? JSON.parse(value) : initialValue;
         } else {
           return initialValue

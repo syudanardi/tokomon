@@ -1,9 +1,17 @@
 export default function appReducer(state, action) {
     switch (action.type) {
       case "ADD_POKEMON":
+        let input = [];
+        if (state.pokemons[action.payload.pokemon]) {
+          input = [...state.pokemons[action.payload.pokemon]]
+        }
+        input.push(action.payload.name)
         return {
           ...state,
-          pokemons: [...state.pokemons, action.payload],
+          pokemons: {
+            ...state.pokemons,
+            [action.payload.pokemon]: input
+          },
         };
         
       case "EDIT_EMPLOYEE":

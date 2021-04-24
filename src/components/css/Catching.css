@@ -1,0 +1,47 @@
+.catching-text{
+  font-size: xx-large;
+  font-weight: bold;
+  text-transform: capitalize;
+}
+
+.catching-pokeball{
+  width: 256px;
+  max-width: 50vw;
+}
+
+.catching-img-container{
+  text-align: -webkit-center;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .pokeball-animated {
+    animation-duration: 0.75s;
+    animation-fill-mode: both;
+    animation-iteration-count: infinite;
+    animation-name: Spin;
+  }
+}
+
+@keyframes Spin {
+  from {
+    transform: rotate(-45deg);
+  }
+  /* to {
+    transform: rotate(90deg);
+  } */
+  50% {
+    transform: rotate(45deg);
+  }
+
+  /* 50% {
+    transform: rotate(-45deg);
+  }
+
+  75% {
+    transform: rotate(45deg);
+  } */
+
+  100%{
+    transform: rotate(-45deg);
+  }
+}

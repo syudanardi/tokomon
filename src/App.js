@@ -8,6 +8,7 @@ import { GlobalProvider } from './context/GlobalState';
 import { Home } from './pages/Home';
 import { PokemonDetails } from './pages/PokemonDetails';
 import { EditEmployee } from './components/EditEmployee';
+import { Navbar } from './components/Navbar';
 
 
 const uri = 'https://graphql-pokeapi.vercel.app/api/graphql';
@@ -17,12 +18,13 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <GlobalProvider>
+        <Navbar/>
         <div className="App mx-2">
-          <Switch>
-            <Route path="/" component={Home} exact />
-            <Route path="/pokemon-details/:name" component={PokemonDetails} exact />
-            <Route path="/edit/:id" component={EditEmployee} exact />
-          </Switch>
+            <Switch>
+              <Route path="/" component={Home} exact />
+              <Route path="/pokemon-details/:name" component={PokemonDetails} exact />
+              <Route path="/edit/:id" component={EditEmployee} exact />
+            </Switch>
         </div>
       </GlobalProvider>
     </ApolloProvider>

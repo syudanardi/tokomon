@@ -8,7 +8,7 @@ export const Heading = () => {
   const { reset } = useContext(GlobalContext);
   return (
     <div>
-      <div className="flex items-center mt-24 mb-10">
+      <div className="flex items-center mt-4 mb-10">
         <div className="flex-grow text-left px-4 py-2 m-2">
           <h5 className="text-gray-900 font-bold text-xl">Pokemon Listing</h5>
         </div>

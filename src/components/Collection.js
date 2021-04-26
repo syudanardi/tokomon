@@ -21,7 +21,7 @@ export const Collection = (props) => {
 
   return (
     <React.Fragment>
-        <div className='flex flex-horizontal gap-6 flex-wrap justify-center'>
+        <div className='flex flex-horizontal gap-6 flex-wrap justify-center mt-10'>
           {list.map((pokemon)=>{
             return (
             <div className={style.cardBorder} key={count++}>

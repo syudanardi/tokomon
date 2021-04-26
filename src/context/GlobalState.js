@@ -23,15 +23,13 @@ function validate(pokemons) {
 function getLocalStorage(key, initialValue) {
     try {
         const value = JSON.parse(window.localStorage.getItem(key));
-        console.log(value)
-
         if (value && value.hasOwnProperty('pokemons')){
           if (validate(value.pokemons)) {
             return {pokemons: value.pokemons, loaded: {}};
           }
-        } else {
-          return initialValue
         }
+        return initialValue
+
     } catch (e) {
         // if error, return initial value
         return initialValue;

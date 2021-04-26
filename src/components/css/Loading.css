@@ -1,0 +1,42 @@
+.loading-container{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.loading-image {
+  margin-top:2rem;
+  width: 220px;
+  align-self: center;
+  max-width: 25vmin;
+}
+
+.loading-text {
+  font-size: xx-large;
+  font-weight: bold;
+  font-family: cursive;
+}
+
+
+@media (prefers-reduced-motion: no-preference) {
+  .loading-animated {
+    animation-duration: 0.75s;
+    animation-fill-mode: both;
+    animation-iteration-count: infinite;
+    animation-name: Flip;
+  }
+}
+
+@keyframes Flip {
+  from {
+    transform: scaleX(1);
+  }
+
+  50% {
+    transform: scaleX(-1);
+  }
+
+  100%{
+    transform: scaleX(1);
+  }
+}

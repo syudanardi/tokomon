@@ -15,9 +15,13 @@ export const Navbar = ()=>{
   return(
       <nav className="navbar">
         <div className="navbar-container">
-          <Link to="/" className="logo-container">
-            <img className="img-logo" src={TokomonLogo} alt="Tokomon Logo"/>
-          </Link>
+          <ul className="navbar-menu logo-container">
+            <li className={"navbar-item"}>
+              <div className="navbar-link" onClick={()=>{utility.reset(reset)}}>
+                <img className="img-item" src={TokomonLogo} alt="Delete Icon"/>
+              </div>
+            </li>
+          </ul>
           <ul className="navbar-menu">
             <li className={location === "/" ? "navbar-item active" : "navbar-item"}>
               <Link to="/" id="list-link" className="navbar-link">

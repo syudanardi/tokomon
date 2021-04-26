@@ -5,15 +5,15 @@
     align-items: center;
     font-size: 1rem;
     position: -webkit-sticky;
-    position: sticky;
+    position: fixed;
     top: 0;
+    width:100%;
     box-shadow: 0 4px 6px -1px rgb(0 0 0 / 7%);
 }
 
 .navbar-container {
   display: flex;
   justify-content: space-between;
-  align-items: center;
 }
 
 .logo-container {
@@ -23,7 +23,8 @@
 }
 
 .img-logo {
-  height: 8vmin;
+  max-height: 8vmin;
+  height: 80px
 }
 
 .navbar-menu {
@@ -94,6 +95,6 @@
   }
 
   .navbar-item {
-    width: 50vw;
+    width: 33vw;
   }
 }

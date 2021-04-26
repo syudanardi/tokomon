@@ -2,6 +2,7 @@ import React from "react";
 import { useQuery } from '@apollo/client';
 import { GET_POKEMON } from 'api/pokemon'
 import { Pill } from 'components/Pill';
+import {Loading} from 'components/Loading';
 import pokeball from 'images/green-tpb.png';
 import openPokeball from 'images/green-tpbo.png';
 import 'components/css/Details.css';
@@ -16,8 +17,8 @@ export const Details = (prop) => {
   }
 
   function getPokemon() {
-    if (loading) return <p>Loading...</p>;
-    if (error) return <p>Error :(</p>;
+    if (loading) return <div className="loading-container"><Loading/></div>;
+    if (error) return <p>Error loading graphql: {error}</p>;
       return(
         <div className="grid grid-cols-1 divide-y-2 gap-4 md:grid-cols-4 lg:grid-cols-4 md:divide-x-2 md:divide-y-0 space-y-2">
           <div className="col-span-1 justify-self-center">

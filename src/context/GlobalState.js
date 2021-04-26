@@ -4,10 +4,10 @@ import appReducer from 'context/AppReducer';
 
 let initialState = {
   pokemons: {},
-  loaded: {}
+  loaded: []
 };
 
-function validate(pokemons) {
+function validateLocal(pokemons) {
   let keys = Object.keys(pokemons);
   for(let key of keys) {
     if (typeof pokemons[key] != 'object') {
@@ -24,8 +24,8 @@ function getLocalStorage(key, initialValue) {
     try {
         const value = JSON.parse(window.localStorage.getItem(key));
         if (value && value.hasOwnProperty('pokemons')){
-          if (validate(value.pokemons)) {
-            return {pokemons: value.pokemons, loaded: {}};
+          if (validateLocal(value.pokemons)) {
+            return {...initialValue, pokemons: value.pokemons};
           }
         }
         return initialValue
@@ -36,17 +36,39 @@ function getLocalStorage(key, initialValue) {
     }
 }
 
+function getSessionStorage(key, state) {
+  try {
+      const value = JSON.parse(window.sessionStorage.getItem(key));
+      if (Array.isArray(value)){
+        return {...state, loaded: value}
+      }
+      return {...state, loaded: initialState.loaded}
+
+  } catch (e) {
+      // if error, return initial value
+      return state;
+  }
+}
+
 function setLocalStorage(key, value) {
     try {
-        window.localStorage.setItem(key, JSON.stringify(value));
+      window.localStorage.setItem(key, JSON.stringify(value));
     } catch (e) {
+      console.log(e)
         // catch possible errors:
         // https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API/Using_the_Web_Storage_API
     }
 }
 
-const currentState = getLocalStorage('tokomonState', initialState)
+function setSessionStorage(key, value) {
+  try {
+    window.sessionStorage.setItem(key, JSON.stringify(value));
+  } catch (e) {
+    console.log(e)
+  }
+}
 
+const currentState = getSessionStorage('loadedPokemons', getLocalStorage('tokomonState', initialState))
 export const GlobalContext = createContext(currentState);
   
 
@@ -56,6 +78,10 @@ export const GlobalProvider = ({ children }) => {
   useEffect(() => {
     setLocalStorage("tokomonState", {pokemons: state.pokemons});
   }, [state]);
+
+  useEffect(()=>{
+    setSessionStorage("loadedPokemons", state.loaded)
+  }, [state])
 
   /**
    * Catch a pokemon
@@ -87,20 +113,29 @@ export const GlobalProvider = ({ children }) => {
   }
 
   function reset() {
-      dispatch({
-          type: "RESET",
-          payload: initialState
-      })
+    dispatch({
+        type: "RESET",
+        payload: initialState
+    })
+  }
+
+  function loadPokemon(loaded) {
+    dispatch({
+      type: "LOAD_POKEMON",
+      payload: loaded
+    })
   }
 
   return (
     <GlobalContext.Provider
       value={{
         pokemons: state.pokemons,
+        loaded: state.loaded,
         addPokemon,
         editPokemon,
         removePokemon,
-        reset
+        reset,
+        loadPokemon
       }}
     >
       {children}

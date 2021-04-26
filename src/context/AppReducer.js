@@ -64,6 +64,12 @@ export default function appReducer(state, action) {
         return {
 					...action.payload
 				};
+      
+      case "LOAD_POKEMON":
+        return {
+          ...state,
+          loaded: [...state.loaded, ...action.payload],
+        }
 
       default:
         return state;

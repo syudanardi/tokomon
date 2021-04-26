@@ -67,4 +67,22 @@ export const utility =
         }
       })
     },
+
+    reset: (resetFunction)=>{
+      MySwal.fire({
+        title: 'DELETE POKEMON COLLECTION',
+        text: "Are you sure you want to delete your collections?",
+        showCancelButton: true,
+        confirmButtonTex: 'Yes'
+      }).then((result)=>{
+        if(result.isConfirmed) {
+          resetFunction();
+          MySwal.fire(
+            'Deleted',
+            'Your collection is empty now',
+            'success'
+          )
+        }
+      })
+    }
   }

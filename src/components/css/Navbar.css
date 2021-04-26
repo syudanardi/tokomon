@@ -79,6 +79,14 @@
   display: block;
 }
 
+#delete-link{
+  cursor:pointer;
+}
+
+#delete-link:hover #delete-text{
+  display:block;
+}
+
 
 @media (max-width: 768px) {
   .logo-container{

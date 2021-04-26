@@ -1,0 +1,16 @@
+.collection-card p{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space:nowrap
+}
+
+.collection-card {
+  width: 7rem;
+}
+
+.card-container {
+  padding: 1rem;
+  border: solid 2px goldenrod;
+  border-radius: 20px;
+  background-color: yellowgreen;
+}

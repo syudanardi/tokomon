@@ -7,7 +7,7 @@ import { ApolloProvider } from '@apollo/client/react';
 import { GlobalProvider } from './context/GlobalState';
 import { Home } from './pages/Home';
 import { PokemonDetails } from './pages/PokemonDetails';
-import { EditEmployee } from './components/EditEmployee';
+import { MyCollection} from './pages/MyCollection';
 import { Navbar } from './components/Navbar';
 
 
@@ -23,7 +23,7 @@ function App() {
             <Switch>
               <Route path="/" component={Home} exact />
               <Route path="/pokemon-details/:name" component={PokemonDetails} exact />
-              <Route path="/edit/:id" component={EditEmployee} exact />
+              <Route path="/collection" component={MyCollection} exact />
             </Switch>
         </div>
       </GlobalProvider>

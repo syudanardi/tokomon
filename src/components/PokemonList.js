@@ -15,19 +15,14 @@ export const PokemonList = () => {
     if (!loading) {
       setPokemonsData(data.pokemons.results);
     }
-  }, [limit, loading, pokemonsData]);
-  let pokemons = [];
-
-  // function getPokemons() {
-  //   if (loading) return <p>Loading...</p>;
-  //   if (error) return <p>Error :(</p>;
-  //   return(
-       
-  //   )
-  // }
+  }, [limit, loading, pokemonsData]) // eslint-disable-line react-hooks/exhaustive-deps
 
   function loadMore() {
     setLimit(limit + 24);
+  }
+
+  if(error) {
+    return <p>Error Loading Pokemons from graphql</p>
   }
 
   return (
@@ -36,7 +31,7 @@ export const PokemonList = () => {
          <div className="grid grid-cols-2 gap-6 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-6">
           {pokemonsData.map((pokemon)=>{
             return (
-              <Link to={`/pokemon-details/${pokemon.name}`}>
+              <Link to={`/pokemon-details/${pokemon.name}`} key={pokemon.id}>
                 <PokemonCard pokemon={pokemon}/>
               </Link>
             )

@@ -1,5 +1,6 @@
 export default function appReducer(state, action) {
     let input = [];
+    let index = -1;
     switch (action.type) {
       case "ADD_POKEMON":
         input = [];
@@ -15,19 +16,19 @@ export default function appReducer(state, action) {
           },
         };
         
-      case "EDIT_EMPLOYEE":
-        const updatedEmployee = action.payload;
-  
-        const updatedEmployees = state.employees.map((employee) => {
-          if (employee.id === updatedEmployee.id) {
-            return updatedEmployee;
-          }
-          return employee;
-        });
-  
+      case "EDIT_POKEMON":
+        input = [];
+        if (state.pokemons[action.payload.pokemon]) {
+          input = [...state.pokemons[action.payload.pokemon].names]
+        }
+        index = input.indexOf(action.payload.name)
+        input.splice(index, 1, action.payload.newName)
         return {
           ...state,
-          employees: updatedEmployees,
+          pokemons: {
+            ...state.pokemons,
+            [action.payload.pokemon]: {names: input, image: action.payload.image}
+          },
         };
   
       case "REMOVE_POKEMON":
@@ -35,7 +36,7 @@ export default function appReducer(state, action) {
         if (state.pokemons[action.payload.pokemon]) {
           input = [...state.pokemons[action.payload.pokemon].names]
         }
-        const index = input.indexOf(action.payload.name);
+        index = input.indexOf(action.payload.name);
         if (index > -1) {
           input.splice(index, 1);
         } else {

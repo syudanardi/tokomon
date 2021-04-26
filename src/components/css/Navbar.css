@@ -60,6 +60,10 @@
   transition: .25s ease;
 }
 
+.active .navbar-link .img-item{
+  filter: drop-shadow(2px 4px 6px black);
+}
+
 .navbar-text {
   margin-top: 6px;
   color:white;

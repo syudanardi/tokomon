@@ -6,9 +6,9 @@ import {style} from "components/css/CommonStyle";
 import "components/css/Catching.css";
 
 export const Catching = (props) =>{
-  const {catching, setCatching, pokemons, addPokemon} = props.state
+  const {catching, setCatching} = props.state
   const [loading, setLoading] = useState(true)
-  let success = (Math.random()*10 > 5 ? true : false);
+  let success = (Math.random()*10 > 5 ? true : true);
   if(loading) {
     setTimeout(()=>{setLoading(false)}, 1000);
   }
@@ -23,7 +23,7 @@ export const Catching = (props) =>{
             <p className="catching-text">Catching {catching.pokemon}!!!</p>
           </div>
           <div className="row-span-1 catching-img-container">
-            <img className="pokeball-animated catching-pokeball" src={pokeball}></img>
+            <img className="pokeball-animated catching-pokeball" src={pokeball} alt="pokeball"></img>
           </div>
         </div>
       </div>
@@ -47,7 +47,7 @@ export const Catching = (props) =>{
               </button>
           </div>
           <div className="row-span-1 catching-img-container">
-            <img className="catching-pokeball" src={openPokeball}></img>
+            <img className="catching-pokeball" src={openPokeball} alt="open pokeball"></img>
           </div>
         </div>
       </div>

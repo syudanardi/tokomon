@@ -1,11 +1,7 @@
 import React, {useState} from "react";
 import pokeball from "images/green-tpb.png";
-import Swal from 'sweetalert2'
 import {style} from "components/css/CommonStyle";
-import withReactContent from 'sweetalert2-react-content';
 import {utility} from 'Utility/Utility';
-
-const MySwal = withReactContent(Swal)
 
 export const Success = (props)=>{
   const { catching, setCatching, pokemons, addPokemon, goBack} = props.state;

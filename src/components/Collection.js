@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React from "react";
 import { Card } from 'components/Card'
 import trashIcon from 'images/trashcan.png';
 import renameIcon from 'images/rename.png';

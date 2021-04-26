@@ -4,14 +4,14 @@ export default function appReducer(state, action) {
       case "ADD_POKEMON":
         input = [];
         if (state.pokemons[action.payload.pokemon]) {
-          input = [...state.pokemons[action.payload.pokemon]]
+          input = [...state.pokemons[action.payload.pokemon].names]
         }
         input.push(action.payload.name)
         return {
           ...state,
           pokemons: {
             ...state.pokemons,
-            [action.payload.pokemon]: input
+            [action.payload.pokemon]: {names: input, image: action.payload.image}
           },
         };
         
@@ -33,7 +33,7 @@ export default function appReducer(state, action) {
       case "REMOVE_POKEMON":
         input=[];
         if (state.pokemons[action.payload.pokemon]) {
-          input = [...state.pokemons[action.payload.pokemon]]
+          input = [...state.pokemons[action.payload.pokemon].names]
         }
         const index = input.indexOf(action.payload.name);
         if (index > -1) {
@@ -46,7 +46,10 @@ export default function appReducer(state, action) {
           ...state,
           pokemons: {
             ...state.pokemons,
-            [action.payload.pokemon]: input
+            [action.payload.pokemon]: {
+              ...[action.payload.pokemon],
+              names: input
+            }
           },
         };
 

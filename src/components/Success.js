@@ -13,7 +13,7 @@ export const Success = (props)=>{
   function handleSubmit(event) {
     event.preventDefault();
     const pokemonName = catching.pokemon.charAt(0).toUpperCase() + catching.pokemon.slice(1);
-    if (pokemons[catching.pokemon] && pokemons[catching.pokemon].includes(nickName)) {
+    if (pokemons[catching.pokemon] && pokemons[catching.pokemon].names.includes(nickName)) {
       MySwal.fire({
         title: <p>Already have {pokemonName} with {nickName} name</p>,
         icon: 'error',
@@ -28,7 +28,7 @@ export const Success = (props)=>{
         title: <p>{nickName} added to your Pokemon List!</p>,
         confirmButtonText: "Neat!"
       }).then((result)=>{
-        addPokemon({pokemon: catching.pokemon, name: nickName})
+        addPokemon({pokemon: catching.pokemon, name: nickName, image: catching.image})
         setCatching({isCatching: false})
       })
     }

@@ -14,8 +14,8 @@ export const Details = (prop) => {
   const {name, setCatching, pokemons, removePokemon} = prop.state;
   const {loading, error, data} = useQuery(GET_POKEMON, {variables: {name:name}})
 
-  function catchPokemon(pokemon) {
-    setCatching({isCatching: true, pokemon})
+  function catchPokemon(pokemon, image) {
+    setCatching({isCatching: true, pokemon, image})
   }
 
   function releasePokemon(pokemon, name) {
@@ -52,13 +52,13 @@ export const Details = (prop) => {
             <div className="flex flex-row justify-start font-semibold h-24 justify-center">
               {data.pokemon.types.map((type)=>{
                 let typeName = type.type.name;
-                return <Pill style="mx-4 "  text={typeName} color={{bg:typeName}}></Pill>
+                return <Pill customStyle="mx-4 "  text={typeName} color={{bg:typeName}}></Pill>
               })}
             </div>
-            <div className="floating-button" onClick={()=>{catchPokemon(data.pokemon.name)}}>
+            <div className="floating-button" onClick={()=>{catchPokemon(data.pokemon.name, data.pokemon.sprites.front_default)}}>
               <div className="pokeball-button">
-                <img className="mx-auto lg:h-24 pokeball-img" src={pokeball}/>
-                <img className="mx-auto lg:h-24 pokeball-img" src={openPokeball}/>
+                <img className="mx-auto lg:h-24 pokeball-img" src={pokeball} alt="pokeball"/>
+                <img className="mx-auto lg:h-24 pokeball-img" src={openPokeball} alt="open pokeball"/>
               </div>
               <p className="w-auto">Catch</p>
             </div>
@@ -68,10 +68,10 @@ export const Details = (prop) => {
               <div className="row-span-1">
                 <h3 className="font-bold text-4xl my-3 bg-green-300 rounded-md lg:pb-2">Owned</h3>
                 <div className="flex flex-row flex-wrap justify-start font-semibold h-24 justify-center">
-                  {pokemons[data.pokemon.name] ? pokemons[data.pokemon.name].map((owned)=>{
+                  {pokemons[data.pokemon.name] && pokemons[data.pokemon.name].names.length > 0 ? pokemons[data.pokemon.name].names.map((owned)=>{
                     return (
                       <div onClick={()=>{releasePokemon(data.pokemon.name, owned)}}>
-                        <Pill style="mx-4 h-12 hover:bg-red-500 hover:text-white" text={owned}></Pill>
+                        <Pill customStyle="mx-4 h-12 hover:bg-red-500 hover:text-white" text={owned}></Pill>
                       </div>
                     )
                   }) : <>None</>}
@@ -81,7 +81,7 @@ export const Details = (prop) => {
                 <h3 className="font-bold text-4xl my-3 bg-green-300 rounded-md lg:pb-2">Moves</h3>
                 <div className="flex flex-row flex-wrap justify-start font-semibold h-auto justify-center last-element">
                   {data.pokemon.moves.map((move)=>{
-                    return <Pill style="mx-2 h-12 flex-none" text={move.move.name}></Pill>
+                    return <Pill customStyle="mx-2 h-12 flex-none" text={move.move.name}></Pill>
                   })}
                 </div>
               </div>

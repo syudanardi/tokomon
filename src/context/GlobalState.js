@@ -3,17 +3,32 @@ import React, { createContext, useReducer, useEffect } from 'react';
 import appReducer from 'context/AppReducer';
 
 let initialState = {
-  pokemons: {
-    charmander: ['Rizky', 'Ajeng'],
-    bulbasaur: ['Mas Eko', 'Puput']
-  }
+  pokemons: {},
+  loaded: {}
 };
+
+function validate(pokemons) {
+  let keys = Object.keys(pokemons);
+  for(let key of keys) {
+    if (typeof pokemons[key] != 'object') {
+      return false
+    }
+    if (!pokemons[key].hasOwnProperty('image')) {
+      return false
+    }
+    return true
+  }
+}
   
 function getLocalStorage(key, initialValue) {
     try {
-        const value = window.localStorage.getItem(key);
-        if (JSON.parse(value).hasOwnProperty('pokemons')){
-          return value ? JSON.parse(value) : initialValue;
+        const value = JSON.parse(window.localStorage.getItem(key));
+        console.log(value)
+
+        if (value && value.hasOwnProperty('pokemons')){
+          if (validate(value.pokemons)) {
+            return {pokemons: value.pokemons, loaded: {}};
+          }
         } else {
           return initialValue
         }
@@ -41,7 +56,7 @@ export const GlobalProvider = ({ children }) => {
   const [state, dispatch] = useReducer(appReducer, currentState);
 
   useEffect(() => {
-    setLocalStorage("tokomonState", state);
+    setLocalStorage("tokomonState", {pokemons: state.pokemons});
   }, [state]);
 
   function addPokemon(pokemon) {

@@ -19,8 +19,8 @@ export const Details = (prop) => {
     if (loading) return <p>Loading...</p>;
     if (error) return <p>Error :(</p>;
       return(
-        <div className="grid grid-cols-1 divide-y-2 gap-4 lg:grid-cols-4 lg:divide-x-2 lg:divide-y-0 space-y-2">
-          <div className="col-span-1 lg:col-span-1 justify-self-center">
+        <div className="grid grid-cols-1 divide-y-2 gap-4 md:grid-cols-4 lg:grid-cols-4 md:divide-x-2 md:divide-y-0 space-y-2">
+          <div className="col-span-1 justify-self-center">
             <img
               src={data.pokemon.sprites.front_default}
               className="bg-gray-300 w-auto h-40 object-cover rounded-full mx-auto shadow-lg"
@@ -41,7 +41,7 @@ export const Details = (prop) => {
               <p className="w-auto">Catch</p>
             </div>
           </div>
-          <div className="col-span-1 lg:col-span-3 lg:px-4">
+          <div className="col-span-1 md:col-span-3 md:px-4">
             <div className="grid grid-row-2">
               <div className="row-span-1">
                 <h3 className="font-bold text-4xl my-3 bg-green-300 rounded-md lg:pb-2">Owned</h3>

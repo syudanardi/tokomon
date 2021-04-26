@@ -4,6 +4,7 @@ import trashIcon from 'images/trashcan.png';
 import renameIcon from 'images/rename.png';
 import {style} from 'components/css/CommonStyle';
 import {utility} from 'Utility/Utility';
+import { Link } from 'react-router-dom';
 import 'components/css/Collection.css';
 
 export const Collection = (props) => {
@@ -26,7 +27,9 @@ export const Collection = (props) => {
             <div className={style.cardBorder} key={count++}>
               
               <div className="collection-card">
-                <Card object={{name:pokemon.name, image:pokemon.image}}/>
+                <Link to={`/pokemon-details/${pokemon.species}`}>
+                  <Card object={{name:pokemon.name, image:pokemon.image}}/>
+                </Link>
               </div>
               
               <div className="grid grid-cols-2 gap-2 mt-4">

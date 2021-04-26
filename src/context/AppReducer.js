@@ -1,9 +1,13 @@
 export default function appReducer(state, action) {
     let input = [];
     let index = -1;
+    function resetVar(){
+      input=[];
+      index=-1;
+    }
     switch (action.type) {
       case "ADD_POKEMON":
-        input = [];
+        resetVar();
         if (state.pokemons[action.payload.pokemon]) {
           input = [...state.pokemons[action.payload.pokemon].names]
         }
@@ -17,7 +21,7 @@ export default function appReducer(state, action) {
         };
         
       case "EDIT_POKEMON":
-        input = [];
+        resetVar();
         if (state.pokemons[action.payload.pokemon]) {
           input = [...state.pokemons[action.payload.pokemon].names]
         }
@@ -27,12 +31,12 @@ export default function appReducer(state, action) {
           ...state,
           pokemons: {
             ...state.pokemons,
-            [action.payload.pokemon]: {names: input, image: action.payload.image}
+            [action.payload.pokemon]: {...state.pokemons[action.payload.pokemon], names: input}
           },
         };
   
       case "REMOVE_POKEMON":
-        input=[];
+        resetVar();
         if (state.pokemons[action.payload.pokemon]) {
           input = [...state.pokemons[action.payload.pokemon].names]
         }
@@ -43,6 +47,7 @@ export default function appReducer(state, action) {
           console.log("error removing, index not found");
           return {...state}
         }
+        
         return {
           ...state,
           pokemons: {
@@ -55,6 +60,7 @@ export default function appReducer(state, action) {
         };
 
       case "RESET":
+        resetVar();
         return {
 					...action.payload
 				};

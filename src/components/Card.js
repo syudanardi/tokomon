@@ -8,7 +8,7 @@ export const Card = ({object}) => {
         className="bg-white h-28 w-auto object-cover rounded-full mx-auto shadow-lg"
         alt={object.name}
       />
-      <p className="capitalize text-xl mt-1 m-auto">{object.name}</p>
+      <span className="capitalize text-xl mt-4 m-auto block" > {object.name} </span>
     </React.Fragment>
   )
 }

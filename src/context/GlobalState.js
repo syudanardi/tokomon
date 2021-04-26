@@ -57,6 +57,10 @@ export const GlobalProvider = ({ children }) => {
     setLocalStorage("tokomonState", {pokemons: state.pokemons});
   }, [state]);
 
+  /**
+   * Catch a pokemon
+   * @param {{pokemon:string, name:string}} pokemon name is nickname, pokemon is species
+   */
   function addPokemon(pokemon) {
     dispatch({
       type: "ADD_POKEMON",
@@ -64,10 +68,14 @@ export const GlobalProvider = ({ children }) => {
     });
   }
 
-  function editEmployee(employee) {
+  /**
+   * Edit a pokemon name
+   * @param {{pokemon:string, name:string, newName:string}} pokemon newName is new nickname, name is nickname, pokemon is species
+   */
+  function editPokemon(pokemon) {
     dispatch({
-      type: "EDIT_EMPLOYEE",
-      payload: employee
+      type: "EDIT_POKEMON",
+      payload: pokemon
     });
   }
 
@@ -90,7 +98,7 @@ export const GlobalProvider = ({ children }) => {
       value={{
         pokemons: state.pokemons,
         addPokemon,
-        editEmployee,
+        editPokemon,
         removePokemon,
         reset
       }}

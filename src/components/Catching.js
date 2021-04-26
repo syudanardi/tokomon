@@ -10,7 +10,7 @@ export const Catching = (props) =>{
   const [loading, setLoading] = useState(true)
   let success = (Math.random()*10 > 5 ? true : true);
   if(loading) {
-    setTimeout(()=>{setLoading(false)}, 1000);
+    setTimeout(()=>{setLoading(false)}, 0);
   }
   function goBack(){
     setCatching({isCatching: false})
@@ -22,7 +22,7 @@ export const Catching = (props) =>{
           <div>
             <p className="catching-text">Catching {catching.pokemon}!!!</p>
           </div>
-          <div className="row-span-1 catching-img-container">
+          <div className="row-span-1 catching-img-container pt-6 pb-24">
             <img className="pokeball-animated catching-pokeball" src={pokeball} alt="pokeball"></img>
           </div>
         </div>

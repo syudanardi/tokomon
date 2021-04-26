@@ -1,7 +1,24 @@
-.collection-card p{
+.collection-card span {
   overflow: hidden;
   text-overflow: ellipsis;
-  white-space:nowrap
+  white-space: nowrap;
+  margin-bottom: 0.5rem;
+  margin-top: 1rem;
+  display: block;
+  height: min-content;
+  border-radius: 10px;
+  background: rgba(16, 185, 129);
+  color: white;
+}
+
+@media (min-width: 768px) {
+  .collection-card span {
+    border-radius: 0px;
+    width: 12.2rem;
+    margin-left: -2.6rem;
+    padding-left: 0.25rem;
+    padding-right: 0.25rem;
+  }
 }
 
 .collection-card {
@@ -10,7 +27,30 @@
 
 .card-container {
   padding: 1rem;
-  border: solid 2px goldenrod;
   border-radius: 20px;
-  background-color: yellowgreen;
+}
+
+.collection-action-container {
+  background: rgba(16, 185, 129);
+  padding: 1px;
+  border-radius:15px;
+  width: -webkit-fill-available;
+  text-align: -webkit-center;
+}
+
+.collection-action-container:last-child {
+  background: red;
+}
+
+.collection-action-container:hover {
+  box-shadow: 0px 0px 5px 1px green;
+  transform: scale(1.5);
+}
+
+.collection-action-container:last-child:hover {
+  box-shadow: 0px 0px 5px 1px red;
+}
+
+.collection-action-button {
+  width: 5vmin;
 }

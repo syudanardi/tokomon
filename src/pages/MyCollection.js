@@ -4,7 +4,7 @@ import {Collection} from "components/Collection";
 import { GlobalContext } from 'context/GlobalState';
 
 export const MyCollection = (route) => {
-  const { pokemons, removePokemon } = useContext(GlobalContext);
+  const { pokemons, removePokemon, editPokemon } = useContext(GlobalContext);
   const [myPokemons, setMyPokemons] = useState({});
 
   useEffect(()=>{
@@ -18,7 +18,7 @@ export const MyCollection = (route) => {
           My Pokemons
         </h3>
         <Heading/>
-        <Collection state={{myPokemons, removePokemon}} ></Collection>
+        <Collection state={{myPokemons, removePokemon, editPokemon}} ></Collection>
       </div>
     </React.Fragment>)
 }

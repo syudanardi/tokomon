@@ -2,7 +2,8 @@ import React, {useState} from "react";
 import pokeball from "images/green-tpb.png";
 import Swal from 'sweetalert2'
 import {style} from "components/css/CommonStyle";
-import withReactContent from 'sweetalert2-react-content'
+import withReactContent from 'sweetalert2-react-content';
+import {utility} from 'Utility/Utility';
 
 const MySwal = withReactContent(Swal)
 
@@ -12,37 +13,9 @@ export const Success = (props)=>{
 
   function handleSubmit(event) {
     event.preventDefault();
-    const pokemonName = catching.pokemon.charAt(0).toUpperCase() + catching.pokemon.slice(1);
-    if (pokemons[catching.pokemon] && pokemons[catching.pokemon].names.includes(nickName)) {
-      MySwal.fire({
-        title: <p>Already have {pokemonName} with {nickName} name</p>,
-        icon: 'error',
-        showConfirmButton: false,
-        showCancelButton: true,
-        cancelButtonText: "Oops..."
-      })
-      return
-    } else {
-      MySwal.fire({
-        icon:'success',
-        title: <p>{nickName} added to your Pokemon List!</p>,
-        confirmButtonText: "Neat!"
-      }).then((result)=>{
-        addPokemon({pokemon: catching.pokemon, name: nickName, image: catching.image})
-        setCatching({isCatching: false})
-      })
+    if (utility.catchPokemon(addPokemon,pokemons, catching.pokemon, nickName, catching.image)) {
+      setCatching({isCatching: false})
     }
-    // MySwal.fire({
-    //   title: <p>You already have </p>,
-    //   confirmButtonText: `Reset`,
-    //   showCancelButton: true,
-    // }).then((result) => {
-    //   if (result.isConfirmed) {
-    //     Swal.fire('Data reset to initial value!', '', 'success');
-    //     reset();
-    //   }
-    // })
-    return
   }
 
   function changeHandler(event) {
@@ -50,12 +23,12 @@ export const Success = (props)=>{
   }
 
   return (
-    <div className={style.container}>
+    <div className={style.container + " success-container"}>
       <div>
         <div>
           <p className="catching-text">{catching.pokemon} captured</p>
         </div>
-        <div className="row-span-1 catching-img-container">
+        <div className="row-span-1 py-6 catching-img-container">
           <img className="catching-pokeball" src={pokeball} alt="Catching-Pokeball"></img>
         </div>
         <div>
@@ -70,7 +43,7 @@ export const Success = (props)=>{
             </form>
         </div>
         <div>
-          <button onClick={()=>{goBack()}}>Release Instead</button>
+          <button className="release-button" onClick={()=>{goBack()}}>Release Instead</button>
         </div>
       </div>
     </div>

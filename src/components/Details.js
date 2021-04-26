@@ -5,10 +5,7 @@ import { Pill } from 'components/Pill';
 import pokeball from 'images/green-tpb.png';
 import openPokeball from 'images/green-tpbo.png';
 import 'components/css/Details.css';
-import Swal from 'sweetalert2'
-import withReactContent from 'sweetalert2-react-content'
-
-const MySwal = withReactContent(Swal)
+import {utility} from 'Utility/Utility'
 
 export const Details = (prop) => {
   const {name, setCatching, pokemons, removePokemon} = prop.state;
@@ -16,25 +13,6 @@ export const Details = (prop) => {
 
   function catchPokemon(pokemon, image) {
     setCatching({isCatching: true, pokemon, image})
-  }
-
-  function releasePokemon(pokemon, name) {
-    console.log("hahahah");
-    MySwal.fire({
-      title: <p>Are you sure you want to release {name}?</p>,
-      confirmButtonText: "Yes!",
-      showCancelButton: "NO!!!",
-      icon: 'warning',
-    }).then((result)=>{
-      if (result.isConfirmed) {
-        removePokemon({pokemon,name});
-        MySwal.fire(
-          'Released!',
-          `${name} has been released! Bye~`,
-          'success'
-        )
-      }
-    })
   }
 
   function getPokemon() {
@@ -70,7 +48,7 @@ export const Details = (prop) => {
                 <div className="flex flex-row flex-wrap justify-start font-semibold h-24 justify-center">
                   {pokemons[data.pokemon.name] && pokemons[data.pokemon.name].names.length > 0 ? pokemons[data.pokemon.name].names.map((owned)=>{
                     return (
-                      <div onClick={()=>{releasePokemon(data.pokemon.name, owned)}}>
+                      <div onClick={()=>{utility.releasePokemon(removePokemon, data.pokemon.name, owned)}}>
                         <Pill customStyle="mx-4 h-12 hover:bg-red-500 hover:text-white" text={owned}></Pill>
                       </div>
                     )

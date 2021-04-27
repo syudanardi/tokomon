@@ -1,17 +1,17 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import { MyCollection } from './MyCollection';
+import { Details } from 'components/Details';
 import ApolloClient from "apollo-boost";
 import { ApolloProvider } from '@apollo/client/react';
 
-describe('MyCollection', () => {
-  test('renders MyCollection component', () => {
+describe('Home', () => {
+  test('renders Home component', () => {
     const uri = 'https://graphql-pokeapi.vercel.app/api/graphql';
     const client = new ApolloClient({ uri });
-
+    
     render(
-      <ApolloProvider client={client}>\
-        <MyCollection />
+      <ApolloProvider client={client}>
+        <Details state={{setCatching: ()=>{}, name:"ivysaur"}}/>
       </ApolloProvider>
     );
   });

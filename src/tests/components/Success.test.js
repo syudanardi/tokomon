@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import { Success } from './Success';
+import { Success } from 'components/Success';
 import { GlobalProvider } from 'context/GlobalState';
 
 describe('Home', () => {

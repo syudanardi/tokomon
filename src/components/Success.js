@@ -12,7 +12,7 @@ export const Success = (props)=>{
 
   function handleSubmit(event) {
     event.preventDefault();
-    if (utility.catchPokemon(addPokemon,pokemons, catching.pokemon, nickName, catching.image)) {
+    if (utility.catchPokemon(addPokemon, pokemons, catching.pokemon, nickName, catching.image)) {
       setCatching({isCatching: false})
     }
   }
@@ -36,7 +36,9 @@ export const Success = (props)=>{
                 type="text"
                 value={nickName}
                 onChange={changeHandler}
-                maxlength="12"
+                maxLength="12"
+                pattern=".*\S.*"
+                title="at least 1 non space character"
                 required
                 placeholder="enter unique name"/>
                 <button className="px-8 rounded-r-lg bg-green-400 text-white font-bold p-4 uppercase border-yellow-500 border-t border-b border-r">KEEP</button>

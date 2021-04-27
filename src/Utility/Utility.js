@@ -4,13 +4,24 @@ import withReactContent from 'sweetalert2-react-content'
 
 const MySwal = withReactContent(Swal)
 
+function capitalize(text) {
+  return text.charAt(0).toUpperCase() + text.slice(1);
+}
+
+const nameRegex = new RegExp('\\S{1,25}', 'g'); //at least 1 valid char
+
 export const utility = 
   {
     catchPokemon: (catchFunction, pokemons, pokemon, nickName, image)=>{
-      const pokemonName = pokemon.charAt(0).toUpperCase() + pokemon.slice(1);
-      if (pokemons[pokemon] && pokemons[pokemon].names.includes(nickName)) {
+      const pokemonName = capitalize(pokemon);
+      if ((pokemons[pokemon] && pokemons[pokemon].names.includes(nickName.toLowerCase())) || !nameRegex.test(nickName)) {
+        
+        const title = (pokemons[pokemon].names.includes(nickName.toLowerCase()) ? 
+        <p>Already have {pokemonName} with {capitalize(nickName)} name</p> :
+        <p>Please use atleast 1 non-space character</p>)
+
         MySwal.fire({
-          title: <p>Already have {pokemonName} with {nickName} name</p>,
+          title: title,
           icon: 'error',
           showConfirmButton: false,
           showCancelButton: true,
@@ -20,10 +31,10 @@ export const utility =
       } else {
         MySwal.fire({
           icon:'success',
-          title: <p>{nickName} added to your Pokemon List!</p>,
+          title: <p>{capitalize(nickName)} added to your Pokemon List!</p>,
           confirmButtonText: "Neat!"
         }).then(()=>{
-          catchFunction({pokemon: pokemon, name: nickName, image})
+          catchFunction({pokemon: pokemon, name: nickName.toLowerCase(), image})
         })
         return true;
       }
@@ -47,21 +58,34 @@ export const utility =
       })
     },
 
-    renamePokemon: (editFunction, pokemon, name)=>{
+    renamePokemon: (currentNames, editFunction, pokemon, name)=>{
       MySwal.fire({
         title: 'Enter new name',
         input: 'text',
         inputAttributes: {
-          autocapitalize: 'off'
+          autocapitalize: 'off',
+          maxlength: 12
         },
         showCancelButton: true,
         confirmButtonText: 'Rename',
-      }).then((result)=>{
+        preConfirm: (value) => {
+          if (!value || !nameRegex.test(value)) {
+            Swal.showValidationMessage(
+              'name is required'
+            )
+          }
+          if (currentNames.includes(value.toLowerCase())) {
+            Swal.showValidationMessage(
+              `${capitalize(value)} already used for this type of pokemon`
+            )
+          }
+        }
+      },).then((result)=>{
         if (result.isConfirmed) {
-          editFunction({pokemon, name, newName: result.value});
+          editFunction({pokemon, name, newName: result.value.toLowerCase()});
           MySwal.fire(
             'Renamed!',
-            `${name} has been renamed to ${result.value}`,
+            `${capitalize(name)} has been renamed to ${capitalize(result.value)}`,
             'success'
           )
         }

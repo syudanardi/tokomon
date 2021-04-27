@@ -34,7 +34,7 @@ export const Collection = (props) => {
               
               <div className="grid grid-cols-2 gap-2 mt-4">
                 <div className="collection-action-container"
-                onClick={()=>{utility.renamePokemon(editPokemon, pokemon.species, pokemon.name)}}>
+                onClick={()=>{utility.renamePokemon(myPokemons[pokemon.species].names, editPokemon, pokemon.species, pokemon.name)}}>
                   <img src={renameIcon} alt="Rename Icon" className="collection-action-button"/>
                 </div>
                 <div className="collection-action-container"

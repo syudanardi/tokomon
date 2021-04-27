@@ -36,6 +36,7 @@ export const Success = (props)=>{
                 type="text"
                 value={nickName}
                 onChange={changeHandler}
+                maxlength="12"
                 required
                 placeholder="enter unique name"/>
                 <button className="px-8 rounded-r-lg bg-green-400 text-white font-bold p-4 uppercase border-yellow-500 border-t border-b border-r">KEEP</button>

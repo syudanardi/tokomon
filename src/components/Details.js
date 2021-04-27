@@ -48,12 +48,12 @@ export const Details = (prop) => {
             <div className="grid grid-row-2">
               <div className="row-span-1">
                 <h3 className="font-bold text-4xl my-3 bg-green-300 rounded-md lg:pb-2">Owned</h3>
-                <div className="flex flex-row flex-wrap justify-start font-semibold h-auto justify-center last-element">
+                <div className="flex flex-row flex-wrap justify-start font-semibold h-auto justify-center capitalize last-element">
                   {pokemons[data.pokemon.name] && pokemons[data.pokemon.name].names.length > 0 ? pokemons[data.pokemon.name].names.map((owned)=>{
                     return (
                       <div onClick={()=>{utility.releasePokemon(removePokemon, data.pokemon.name, owned)}}>
-                        <span className={`mx-4 h-12 hover:bg-red-500 hover:text-white flex items-center border rounded-full w-24 justify-center mt-2 mb-12`}>
-                        {owned}</span>
+                        <div className={`detail-pill mx-4 min-h-12 hover:bg-red-500 hover:text-white flex items-center border rounded-full w-24 justify-center mt-2 mb-12`}>
+                        <p className="detail-pill-text hover:bg-red-500 ">{owned}</p></div>
                       </div>
                     )
                   }) : <>None</>}
@@ -61,10 +61,10 @@ export const Details = (prop) => {
               </div>
               <div className="row-span-1">
                 <h3 className="font-bold text-4xl my-3 bg-green-300 rounded-md lg:pb-2">Moves</h3>
-                <div className="flex flex-row flex-wrap justify-start font-semibold h-auto justify-center last-element">
+                <div className="flex flex-row flex-wrap justify-start font-semibold h-auto justify-center capitalize last-element">
                   {data.pokemon.moves.map((move)=>{
-                    return <span className={`mx-2 h-12 flex-none flex items-center border rounded-full w-24 justify-center mt-2 mb-12`}>
-                      {move.move.name}</span>
+                    return <div className={`detail-pill mx-2 min-h-12 flex-none flex items-center border rounded-full w-24 justify-center mt-2 mb-12`}>
+                      <p className="detail-pill-text">{move.move.name}</p></div>
                   })}
                 </div>
               </div>

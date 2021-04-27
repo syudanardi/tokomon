@@ -8,6 +8,37 @@
   display: none;  
 }
 
+.detail-pill {
+  white-space: nowrap;
+  min-height: 6vmin;
+  z-index: 0;
+  position: relative;
+}
+
+.detail-pill-text{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  position: absolute;
+  width: 100%;
+}
+
+.detail-pill:hover {
+  white-space: normal;
+  height: max-content;
+  border-radius: 10px;
+  padding: 0.25rem 0.25rem;
+  z-index: 100;
+}
+
+.detail-pill:hover .detail-pill-text{
+  overflow-wrap: break-word;
+  z-index: 100;
+  border-radius: 10px;
+}
+
+.no-color {
+  background: none;
+}
 
 @media (max-width: 768px) {
   .last-element {

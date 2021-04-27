@@ -36,7 +36,7 @@ export const Success = (props)=>{
                 type="text"
                 value={nickName}
                 onChange={changeHandler}
-                maxLength="12"
+                maxLength="11"
                 pattern=".*\S.*"
                 title="at least 1 non space character"
                 required

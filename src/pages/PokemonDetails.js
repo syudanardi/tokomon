@@ -10,7 +10,7 @@ export const PokemonDetails = (route) => {
   return (
     <React.Fragment>
       <div className="container mx-auto max-w-7xl mb-4">
-        <h3 className="text-center text-3xl mt-24 text-base leading-8 text-black font-bold tracking-wide uppercase">
+        <h3 className="text-center text-3xl mt-2 text-base leading-8 text-black font-bold tracking-wide uppercase">
           Pokedex Entry For {name}
         </h3>
         {catching.isCatching ? <Catching state={{catching, setCatching, pokemons, addPokemon}}></Catching> :

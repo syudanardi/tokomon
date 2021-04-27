@@ -1,13 +1,15 @@
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect, useContext} from "react";
 import { useQuery } from '@apollo/client';
-import {PokemonCard} from 'components/PokemonCard'
+import {Card} from 'components/Card'
 import { Link } from 'react-router-dom';
 import PikaWave from 'images/pika-wave.png';
 import {Loading} from 'components/Loading';
 import {GET_POKEMONS} from 'api/pokemon'
+import { GlobalContext } from 'context/GlobalState';
+const {style} = require('components/css/CommonStyle')
 
-export const PokemonList = (props) => {
-  const {loaded, loadPokemon} = props.state
+export const PokemonList = () => {
+  const {loaded, loadPokemon, pokemons } = useContext(GlobalContext);
   const limit = 12;
   let offset = loaded.length
   const [loadTrigger, setLoadTrigger] = useState(loaded.length === 0 ? true: false)
@@ -34,9 +36,15 @@ export const PokemonList = (props) => {
       <div className="mt-10 flex items-center justify-center"> 
          <div className="grid grid-cols-2 gap-6 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-6">
           {loaded.map((pokemon)=>{
+            let count = (pokemons[pokemon.name] !== undefined ? pokemons[pokemon.name].names.length : 0);
             return (
               <Link to={`/pokemon-details/${pokemon.name}`} key={pokemon.id}>
-                <PokemonCard pokemon={pokemon}/>
+                <div className={style.cardBorder}>
+                  <Card object={pokemon}/>
+                  <span className={style.ownedFrame}>
+                    Owned: {count}
+                  </span>
+                </div>
               </Link>
             )
           })}

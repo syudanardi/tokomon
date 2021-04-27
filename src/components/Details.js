@@ -1,7 +1,6 @@
 import React from "react";
 import { useQuery } from '@apollo/client';
 import { GET_POKEMON } from 'api/pokemon'
-import { Pill } from 'components/Pill';
 import {Loading} from 'components/Loading';
 import pokeball from 'images/green-tpb.png';
 import openPokeball from 'images/green-tpbo.png';
@@ -31,7 +30,8 @@ export const Details = (prop) => {
             <div className="flex flex-row justify-start font-semibold h-24 justify-center">
               {data.pokemon.types.map((type)=>{
                 let typeName = type.type.name;
-                return <Pill customStyle="mx-4 "  text={typeName} color={{bg:typeName}}></Pill>
+                return <span className={`mx-4 flex items-center border rounded-full w-24 justify-center mt-2 mb-12 bg-${typeName}`}>
+                  {typeName}</span>
               })}
             </div>
             <div className="floating-button" onClick={()=>{catchPokemon(data.pokemon.name, data.pokemon.sprites.front_default)}}>
@@ -50,7 +50,8 @@ export const Details = (prop) => {
                   {pokemons[data.pokemon.name] && pokemons[data.pokemon.name].names.length > 0 ? pokemons[data.pokemon.name].names.map((owned)=>{
                     return (
                       <div onClick={()=>{utility.releasePokemon(removePokemon, data.pokemon.name, owned)}}>
-                        <Pill customStyle="mx-4 h-12 hover:bg-red-500 hover:text-white" text={owned}></Pill>
+                        <span className={`mx-4 h-12 hover:bg-red-500 hover:text-white flex items-center border rounded-full w-24 justify-center mt-2 mb-12`}>
+                        {owned}</span>
                       </div>
                     )
                   }) : <>None</>}
@@ -60,7 +61,8 @@ export const Details = (prop) => {
                 <h3 className="font-bold text-4xl my-3 bg-green-300 rounded-md lg:pb-2">Moves</h3>
                 <div className="flex flex-row flex-wrap justify-start font-semibold h-auto justify-center last-element">
                   {data.pokemon.moves.map((move)=>{
-                    return <Pill customStyle="mx-2 h-12 flex-none" text={move.move.name}></Pill>
+                    return <span className={`mx-2 h-12 flex-none flex items-center border rounded-full w-24 justify-center mt-2 mb-12`}>
+                      {move.move.name}</span>
                   })}
                 </div>
               </div>

@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import {PokemonList} from "components/PokemonList";
 
 export const Home = () => {

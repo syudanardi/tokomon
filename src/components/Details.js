@@ -48,7 +48,7 @@ export const Details = (prop) => {
             <div className="grid grid-row-2">
               <div className="row-span-1">
                 <h3 className="font-bold text-4xl my-3 bg-green-300 rounded-md lg:pb-2">Owned</h3>
-                <div className="flex flex-row flex-wrap justify-start font-semibold h-24 justify-center">
+                <div className="flex flex-row flex-wrap justify-start font-semibold h-auto justify-center last-element">
                   {pokemons[data.pokemon.name] && pokemons[data.pokemon.name].names.length > 0 ? pokemons[data.pokemon.name].names.map((owned)=>{
                     return (
                       <div onClick={()=>{utility.releasePokemon(removePokemon, data.pokemon.name, owned)}}>

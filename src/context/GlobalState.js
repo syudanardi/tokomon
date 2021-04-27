@@ -115,7 +115,7 @@ export const GlobalProvider = ({ children }) => {
   function reset() {
     dispatch({
         type: "RESET",
-        payload: initialState
+        payload: {...state, pokemons:{}}
     })
   }
 

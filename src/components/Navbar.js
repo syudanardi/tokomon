@@ -17,9 +17,9 @@ export const Navbar = ()=>{
         <div className="navbar-container">
           <ul className="navbar-menu logo-container">
             <li className={"navbar-item"}>
-              <div className="navbar-link" onClick={()=>{utility.reset(reset)}}>
+              <Link to="/" id="list-link" className="navbar-link">
                 <img className="img-item" src={TokomonLogo} alt="Delete Icon"/>
-              </div>
+              </Link>
             </li>
           </ul>
           <ul className="navbar-menu">

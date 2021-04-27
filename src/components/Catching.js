@@ -10,7 +10,7 @@ export const Catching = (props) =>{
   const [loading, setLoading] = useState(true)
   let success = (Math.random()*10 > 5 ? true : false);
   if(loading) {
-    setTimeout(()=>{setLoading(false)}, 0);
+    setTimeout(()=>{setLoading(false)}, 1000);
   }
   function goBack(){
     setCatching({isCatching: false})

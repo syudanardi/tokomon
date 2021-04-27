@@ -8,7 +8,7 @@ import "components/css/Catching.css";
 export const Catching = (props) =>{
   const {catching, setCatching} = props.state
   const [loading, setLoading] = useState(true)
-  let success = (Math.random()*10 > 5 ? true : true);
+  let success = (Math.random()*10 > 5 ? true : false);
   if(loading) {
     setTimeout(()=>{setLoading(false)}, 0);
   }
@@ -42,7 +42,7 @@ export const Catching = (props) =>{
             <span className="catching-text mx-4">{catching.pokemon} Fleed :(</span>
               <button
                 onClick={()=>{goBack()}} 
-                class="bg-blue-500 hover:bg-blue-300 text-white font-bold py-2 px-4 rounded">
+                className="bg-blue-500 hover:bg-blue-300 text-white font-bold py-2 px-4 rounded">
                 Back
               </button>
           </div>

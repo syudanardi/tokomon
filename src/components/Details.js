@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useContext} from "react";
 import { useQuery } from '@apollo/client';
 import { GET_POKEMON } from 'api/pokemon'
 import {Loading} from 'components/Loading';
@@ -6,9 +6,11 @@ import pokeball from 'images/green-tpb.png';
 import openPokeball from 'images/green-tpbo.png';
 import 'components/css/Details.css';
 import {utility} from 'Utility/Utility'
+import { GlobalContext } from 'context/GlobalState';
 
 export const Details = (prop) => {
-  const {name, setCatching, pokemons, removePokemon} = prop.state;
+  const { pokemons, removePokemon } = useContext(GlobalContext);
+  const { name, setCatching } = prop.state;
   const {loading, error, data} = useQuery(GET_POKEMON, {variables: {name:name}})
 
   function catchPokemon(pokemon, image) {
@@ -69,8 +71,7 @@ export const Details = (prop) => {
             </div>
             
           </div>
-        </div>
-        
+        </div> 
     )
   }
 

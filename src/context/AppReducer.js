@@ -53,7 +53,7 @@ export default function appReducer(state, action) {
           pokemons: {
             ...state.pokemons,
             [action.payload.pokemon]: {
-              ...[action.payload.pokemon],
+              ...state.pokemons[action.payload.pokemon],
               names: input
             }
           },

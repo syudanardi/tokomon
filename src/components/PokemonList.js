@@ -10,7 +10,7 @@ const {style} = require('components/css/CommonStyle')
 
 export const PokemonList = () => {
   const {loaded, loadPokemon, pokemons } = useContext(GlobalContext);
-  const limit = 12;
+  const limit = 24;
   let offset = loaded.length
   const [loadTrigger, setLoadTrigger] = useState(loaded.length === 0 ? true: false)
   const {loading, error, data} = useQuery(GET_POKEMONS, {variables: {limit: limit, offset: offset}})

@@ -67,6 +67,7 @@ export const utility =
         showCancelButton: true,
         confirmButtonText: 'Rename',
         preConfirm: (value) => {
+          // eslint-disable-next-line
           if (value == "") {
             Swal.showValidationMessage(
               'name is required'

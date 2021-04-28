@@ -8,7 +8,7 @@ import "components/css/Catching.css";
 export const Catching = (props) =>{
   const {catching, setCatching} = props.state
   const [loading, setLoading] = useState(true)
-  let success = (Math.random()*10 > 5 ? true : true);
+  let success = (Math.random()*10 > 5 ? true : false);
   if(loading) {
     setTimeout(()=>{setLoading(false)}, 1000);
   }

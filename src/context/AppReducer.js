@@ -47,17 +47,25 @@ export default function appReducer(state, action) {
           console.log("error removing, index not found");
           return {...state}
         }
-        
-        return {
-          ...state,
-          pokemons: {
-            ...state.pokemons,
-            [action.payload.pokemon]: {
-              ...state.pokemons[action.payload.pokemon],
-              names: input
-            }
-          },
-        };
+
+        if(input.length > 0) {
+          return {
+            ...state,
+            pokemons: {
+              ...state.pokemons,
+              [action.payload.pokemon]: {
+                ...state.pokemons[action.payload.pokemon],
+                names: input
+              }
+            },
+          }
+        } else {
+          let newState = {
+            ...state,
+          }
+          delete newState.pokemons[action.payload.pokemon];
+          return newState
+        }
 
       case "RESET":
         resetVar();

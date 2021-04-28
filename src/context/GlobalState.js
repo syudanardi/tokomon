@@ -71,7 +71,6 @@ function setSessionStorage(key, value) {
 const currentState = getSessionStorage('loadedPokemons', getLocalStorage('tokomonState', initialState))
 export const GlobalContext = createContext(currentState);
   
-
 export const GlobalProvider = ({ children }) => {
   const [state, dispatch] = useReducer(appReducer, currentState);
 
@@ -84,8 +83,8 @@ export const GlobalProvider = ({ children }) => {
   }, [state])
 
   /**
-   * Catch a pokemon
-   * @param {{pokemon:string, name:string}} pokemon name is nickname, pokemon is species
+   * Catch a pokemon, storing its nickname and sprite
+   * @param {{pokemon:string, name:string, image:string}} pokemon image is url to pokemon sprite, name is nickname, pokemon is species
    */
   function addPokemon(pokemon) {
     dispatch({
@@ -105,6 +104,10 @@ export const GlobalProvider = ({ children }) => {
     });
   }
 
+  /**
+   * Remove a pokemon from your state.pokemon
+   * @param {{pokemon:string, name:string}} pokemon name is nickname, pokemon is species
+   */
   function removePokemon(pokemon) {
     dispatch({
       type: "REMOVE_POKEMON",
@@ -112,6 +115,9 @@ export const GlobalProvider = ({ children }) => {
     });
   }
 
+  /**
+   * Delete all entries in the collection
+   */
   function reset() {
     dispatch({
         type: "RESET",
@@ -119,6 +125,10 @@ export const GlobalProvider = ({ children }) => {
     })
   }
 
+  /**
+   * Load array of pokemons into the session storage to prevent reloading pokemon lists
+   * @param {[{id: Number, name: String}]} loaded array of pokemons
+   */
   function loadPokemon(loaded) {
     dispatch({
       type: "LOAD_POKEMON",

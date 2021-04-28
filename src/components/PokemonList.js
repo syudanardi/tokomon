@@ -14,6 +14,7 @@ export const PokemonList = () => {
   let offset = loaded.length
   const [loadTrigger, setLoadTrigger] = useState(loaded.length === 0 ? true: false)
   const {loading, error, data} = useQuery(GET_POKEMONS, {variables: {limit: limit, offset: offset}})
+  const MAX_POKEMON = 1117;
 
   useEffect(() => {
     if (!loading && loadTrigger) {
@@ -53,11 +54,11 @@ export const PokemonList = () => {
       {loading ? 
       <div className="loading-container">
         <Loading extraClass={""}/> 
-      </div> :
+      </div> : loaded.length < MAX_POKEMON ?
       <div className="loading-container" onClick={()=>{loadMore()}}>
         <img className="loading-image" src={PikaWave} alt="waving pikachu"></img>
         <p className="loading-text">LOAD MORE</p>
-      </div>
+      </div> : null
       }
     </React.Fragment>
   );

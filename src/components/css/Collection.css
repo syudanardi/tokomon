@@ -1,7 +1,4 @@
 .collection-card span {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
   margin-bottom: 0.5rem;
   margin-top: 1rem;
   display: block;

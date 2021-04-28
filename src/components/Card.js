@@ -1,4 +1,5 @@
 import React from 'react';
+import "components/css/Card.css"
 
 export const Card = ({object}) => {
   return (
@@ -8,7 +9,7 @@ export const Card = ({object}) => {
         className="bg-white h-28 w-auto object-cover rounded-full mx-auto shadow-lg"
         alt={object.name}
       />
-      <span className="capitalize text-xl mt-4 m-auto block" > {object.name} </span>
+      <span className="card-text capitalize text-xl mt-4 m-auto block" > {object.name} </span>
     </React.Fragment>
   )
 }

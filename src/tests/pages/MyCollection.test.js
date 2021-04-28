@@ -14,5 +14,7 @@ describe('MyCollection', () => {
         <MyCollection />
       </ApolloProvider>
     );
+    const linkElement = screen.getByText(/My Pokemons/i);
+    expect(linkElement).toBeInTheDocument();
   });
 });

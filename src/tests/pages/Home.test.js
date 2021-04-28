@@ -14,5 +14,8 @@ describe('Home', () => {
         <Home />
       </ApolloProvider>
     );
+
+    const linkElement = screen.getByText(/POKEMON SHOPPING APP/i);
+    expect(linkElement).toBeInTheDocument();
   });
 });

@@ -68,7 +68,8 @@
 .navbar-text {
   margin-top: 6px;
   color:white;
-  font-family: cursive;
+  font-family: Cartoon;
+  letter-spacing: 1vmin;
   display: none;
 }
 

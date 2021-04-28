@@ -26,14 +26,26 @@
   white-space: normal;
   height: max-content;
   border-radius: 10px;
+  border: none;
   padding: 0.25rem 0.25rem;
   z-index: 100;
+}
+
+.detail-move-pill:hover {
+  border:none;
+}
+
+.detail-move-pill:hover .detail-pill-text {
+  border-style: solid;
+  border-color: #e5e7eb;
+  border-width: 1px;
 }
 
 .detail-pill:hover .detail-pill-text{
   overflow-wrap: break-word;
   z-index: 100;
   border-radius: 10px;
+  min-height: 3rem;
 }
 
 .no-color {

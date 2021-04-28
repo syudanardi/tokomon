@@ -8,6 +8,11 @@
   pointer-events: none;
 }
 
+.page-title {
+  font-family: Cartoon;
+  letter-spacing: 1vmin;
+}
+
 @media (max-width: 768px) {
   .App {
     margin-top: 20vmin;

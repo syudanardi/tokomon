@@ -28,7 +28,7 @@ export const Success = (props)=>{
           <p className="catching-text">{catching.pokemon} captured</p>
         </div>
         <div className="row-span-1 py-6 catching-img-container">
-          <img className="catching-pokeball" src={pokeball} alt="Catching-Pokeball"></img>
+          <img className="catching-pokeball" src={pokeball} alt="catching-Pokeball"></img>
         </div>
         <div>
             <form onSubmit={handleSubmit} className="m-4 flex">

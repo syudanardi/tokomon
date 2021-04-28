@@ -29,14 +29,14 @@ function renderWithRouterMatch(
 }
 
 describe('PokemonDetails', () => {
-  test('renders PokemonDetails component', () => {
+  test('renders PokemonDetails page', () => {
 
     renderWithRouterMatch(PokemonDetails, {
       route: "/pokemon-details/venusaur",
       path: "/pokemon-details/:name"
     })
 
-    const linkElement = screen.getByText(/venusaur/i);
+    const linkElement = screen.getByText(/pokedex entry/i);
     expect(linkElement).toBeInTheDocument();
   });
 });

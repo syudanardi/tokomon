@@ -5,7 +5,7 @@ import ApolloClient from "apollo-boost";
 import { ApolloProvider } from '@apollo/client/react';
 
 describe('Home', () => {
-  test('renders Home component', () => {
+  test('renders Home page', () => {
     const uri = 'https://graphql-pokeapi.vercel.app/api/graphql';
     const client = new ApolloClient({ uri });
 

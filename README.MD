@@ -23,3 +23,6 @@ Naming: Each of your captured pokemon can be named, multiple pokemon of the same
 4. If you want to develop this project I already have some testing set up utilizing [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/).
 
 5. Techstack: [React JS](https://reactjs.org), [Tailwind CSS](https://tailwindcss.com/), [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/), [Apollo GraphQL](https://www.apollographql.com/), [Firebase Hosting](https://firebase.google.com/docs/hosting)
+
+## Preview
+![Preview Image](screenshots/preview.png)

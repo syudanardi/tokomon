@@ -31,7 +31,7 @@ export const Success = (props)=>{
           <img className="catching-pokeball" src={pokeball} alt="catching-Pokeball"></img>
         </div>
         <div>
-            <form onSubmit={handleSubmit} className="m-4 flex">
+            <form onSubmit={handleSubmit} className="m-4 flex	justify-center">
               <input className="rounded-l-lg p-4 border-t mr-0 border-b border-l text-gray-800 border-gray-200 bg-white" 
                 type="text"
                 value={nickName}

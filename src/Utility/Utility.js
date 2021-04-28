@@ -67,23 +67,26 @@ export const utility =
         showCancelButton: true,
         confirmButtonText: 'Rename',
         preConfirm: (value) => {
-          if (currentNames.includes(value.toLowerCase())) {
-            Swal.showValidationMessage(
-              `${capitalize(value)} already used for this type of pokemon`
-            )
-          }
-          else if (value == "") {
+          if (value == "") {
             Swal.showValidationMessage(
               'name is required'
             )
+          } else {
+            const newName = value.trim().replace(/\s\s+/g, ' ').toLowerCase();
+            if (currentNames.includes(newName.toLowerCase())) {
+              Swal.showValidationMessage(
+                `${capitalize(newName)} already used for this type of pokemon`
+              )
+            }
           }
         }
       },).then((result)=>{
         if (result.isConfirmed) {
-          editFunction({pokemon, name, newName: result.value.toLowerCase()});
+          const newName = result.value.trim().replace(/\s\s+/g, ' ').toLowerCase();
+          editFunction({pokemon, name, newName: newName});
           MySwal.fire(
             'Renamed!',
-            `${capitalize(name)} has been renamed to ${capitalize(result.value)}`,
+            `${capitalize(name)} has been renamed to ${capitalize(newName)}`,
             'success'
           )
         }
